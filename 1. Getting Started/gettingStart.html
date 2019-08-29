@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <p>{{title}}</p>
+</div>
+
+</body>
+</html>
+<script>
+    new Vue({
+        /*select  the element with these ID
+        * if you use .app it will search for element with these class*/
+        el: '#app',
+        data: {
+            title: 'Hello World!'
+        }
+    });
+
+</script>
