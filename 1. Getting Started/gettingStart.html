@@ -1,26 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+<!--<script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>-->
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>VueJS</title>
+    <link rel="stylesheet" href="">
+    <script src="vue.js"></script>
 </head>
 <body>
 
 <div id="app">
+    <!-- "v-on" command help vueJS to pass the event, it will listen for it
+    changeTitle - method to be called-->
+    <input type="text" v-on:input="changeGreeting"/>
     <p>{{title}}</p>
 </div>
-
 </body>
 </html>
+
 <script>
+    /*new view instances with constructor, the object has data, methods*/
     new Vue({
         /*select  the element with these ID
         * if you use .app it will search for element with these class*/
         el: '#app',
+        /*all the data in these elements*/
         data: {
+            /*title name is up to you how to call it.*/
             title: 'Hello World!'
+        },
+        /*be careful - methodS  with S */
+        methods:{
+            /*the event object is created by javascript and vue js passes it in the method*/
+            changeGreeting: function (event) {
+                /*vue js automatically take all properties in data object and we can use it there*/
+                this.title = event.target.value;
+            }
         }
     });
-
 </script>
+
+
