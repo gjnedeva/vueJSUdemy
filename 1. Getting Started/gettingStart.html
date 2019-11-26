@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>VueJS</title>
     <link rel="stylesheet" href="">
-    <script src="vue.js"></script>
+    <script src="../vue.js"></script>
 </head>
 <body>
 
-<div id="app">
+<div id="appOne">
     <!-- "v-on" command help vueJS to pass the event, it will listen for it
     changeTitle - method to be called-->
     <input type="text" v-on:input="changeGreeting"/>
@@ -24,7 +24,7 @@
     new Vue({
         /*select  the element with these ID
         * if you use .app it will search for element with these class*/
-        el: '#app',
+        el: '#appOne',
         /*all the data in these elements*/
         data: {
             /*title name is up to you how to call it.*/

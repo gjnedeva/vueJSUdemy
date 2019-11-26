@@ -1,0 +1,47 @@
+<html lang="en">
+<!-- Put this in the HTML section in JSFiddle! -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<head>
+    <title>UsingDom - Lecture 2</title>
+</head>
+
+<body>
+<div id="appTwo">
+	<!--v-once will allow to take the first value of Title variable not the change one in function-->
+	<h1 v-once>{{title}}</h1>
+
+    <!--<a href="{{ link }}"> Google</a> - Does not work, because it try to parse {{link}} to link. We can not parse vueJS in any HTML element attributes;
+    we can add VueJS where normally it is text-->
+    <!--v-bind say to not use the normal attr instead bind this property -->
+	<!--bind sth to my data, dynamically pass the value from my data -->
+    <p>{{ sayHello() }} - <a v-bind:href="link"> Google</a></p>
+	<hr>
+
+	<!--this will not render link, because VueJs does not parse HTML which is good and save us from cross-side scripting attack-->
+	<p>{{finishedLink}}</p>
+
+	<!--this will work by v-html -->
+	<p v-html="finishedLink"></p>
+</div>
+</body>
+</html>
+<script>
+    /*vue js does NOT use on runtime out HTML code; it takes the html up and create template based on our HTML.
+    * html that we write is taken from VueJS and Vue Js instance is the middle layer that generates the final HTMl that browser shows to client.*/
+    new Vue({
+        el: '#appTwo',
+        data: {
+            title: 'Hello World!',
+            link: 'http://google.com',
+			finishedLink:'<a href="http://google.com">Google</a>'
+        },
+        methods: {
+            sayHello: function () {
+                /*return title - this will not work;*/
+                /*'this' revers to data proxy properties*/
+				this.title = 'Hello!';
+                return this.title;
+            }
+        }
+    })
+</script>
