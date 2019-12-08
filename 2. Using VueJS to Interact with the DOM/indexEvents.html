@@ -1,0 +1,56 @@
+<html lang="en">
+<!-- Put this in the HTML section in JSFiddle! -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<head>
+    <title>UsingDom - Lecture 2</title>
+</head>
+<body>
+<div id='app3'>
+    <!-- v-on is listening to sth to receive
+     we can use any dom Event that is connected to button-->
+    <!-- $event is the object to access the original DOM event in an inline statement handler-->
+    <button v-on:click="increase(2, $event)">Click me!</button>
+
+    <!--we can directly write valid Javascript code and it will work in vue js properties-->
+    <button v-on:click="counter++">Click me!</button>
+    <p>{{counter}}</p>
+    <p>{{counter * 2 > 10 ? 'Greater than 10' : 'Smaller than 10'}}</p>
+    <p v-on:mousemove="updateCoordinates">
+        Coordinates: {{x}} / {{y}}
+<!--  - <span v-on:mousemove="dummy"> DEAD SPOT</span> -->
+
+        <!-- we can stop propagation if we write the function above or to use v-on:mousemove.stop -->
+        - <span v-on:mousemove.stop> DEAD SPOT</span>
+    </p>
+    <!-- v-on:keyup can modify keyEvent and also there are some specific key Modifiers like enter, space and others that helps-->
+    <input type="text" v-on:keyup.enter.space="alertMe">
+</div>
+
+</body>
+</html>
+<!---->
+<script>
+    new Vue({
+        el: '#app3',
+        data: {
+            counter: 0,
+            x: 0,
+            y: 0
+        },
+        methods:{
+            increase: function (step, event) {
+                this.counter += step;
+            },
+            updateCoordinates: function(event){
+                this.x = event.clientX;
+                this.y = event.clientY;
+            },
+            dummy: function (event) {
+                event.stopPropagation();
+            },
+            alertMe: function () {
+                alert('Alert!');
+            }
+        }
+    })
+</script>
