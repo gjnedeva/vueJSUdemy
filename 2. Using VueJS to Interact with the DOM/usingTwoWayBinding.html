@@ -1,0 +1,23 @@
+<html lang="en">
+<!-- Put this in the HTML section in JSFiddle! -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<head>
+    <title>UsingDom - Lecture 2</title>
+</head>
+<body>
+<div id="app">
+    <!--v-model directive tells vueJs set up to wait data binding for this input  -->
+    <!--it will output the name and it will change also the name properties everywhere in the app-->
+    <input type="text" v-model="name">
+    <p>{{name}}</p>
+</div>
+</body>
+</html>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            name: 'Max'
+        }
+    });
+</script>
