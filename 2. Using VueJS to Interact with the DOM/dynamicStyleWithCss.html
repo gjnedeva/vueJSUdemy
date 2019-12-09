@@ -1,0 +1,39 @@
+<html lang="en">
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<head>
+    <title>Dynamic style with css</title>
+    <link rel="stylesheet" href="demo.css">
+</head>
+
+<body>
+<div id="app">
+    <!--based on property attachRed the css class will be added or not -->
+    <div class="demo"
+         @click="attachRed = !attachRed"
+         :class="divClasses"></div>
+    <div class="demo" :class="{red: attachRed}"></div>
+    <div class="demo" :class="[color, {red: attachRed}]"></div>
+    <hr>
+    <input type="text" v-model="color">
+</div>
+</body>
+</html>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            attachRed: false,
+            color: 'green'
+        },
+        computed: {
+            divClasses: function () {
+                return {
+                    red: this.attachRed,
+                    blue: !this.attachRed
+                };
+            }
+        }
+
+    })
+</script>
