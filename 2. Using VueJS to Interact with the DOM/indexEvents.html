@@ -1,5 +1,4 @@
 <html lang="en">
-<!-- Put this in the HTML section in JSFiddle! -->
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <head>
     <title>UsingDom - Lecture 2</title>
@@ -50,6 +49,17 @@
             output: function () {
                 console.log('Computed');
                 return this.counter > 5 ?' Greater 5' : 'Smaller 5'
+            }
+        },
+        /*watch execute code upon data changes*/
+        /*user one properties from data as key which should be watched*/
+        watch:{
+            /*i tell that this function should be run when the key property  - counter is changed. It is watching for it.*/
+            counter:function (value) {
+                var vm = this;
+                setTimeout(function () {
+                    vm.counter = 0;
+                },2000);
             }
         },
         methods:{
